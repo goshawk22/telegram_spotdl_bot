@@ -28,9 +28,9 @@ def start(update, context):
 def album(update, context):
     artist, album, album_url = update.message.text[7:].split(',')
     album_path = "/media/audio/" + artist + "/" + album + "/"
-    print(temp_path)
-    os.system(str('mkdir ' + temp_path))
-    os.system(str("spotdl --output-format m4a " + album_url + " --output " + temp_path))
+    print(album_path)
+    os.system(str('mkdir ' + album_path))
+    os.system(str("spotdl --output-format m4a " + album_url + " --output " + album_path))
 
 # Add bot functions
 start_handler = CommandHandler('start', start)
