@@ -1,5 +1,12 @@
 import logging
 import os
+import argparse
+
+# Parse Token
+parser = argparse.ArgumentParser(description='A telegram bot for downloading music on the host')
+parser.add_argument('--token', help='the telegram bot token')
+args = parser.parse_args()
+TOKEN = args.token
 
 # Setup logging
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
@@ -8,9 +15,6 @@ logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s
 # Import telegram API libraries
 from telegram.ext import Updater
 from telegram.ext import CommandHandler
-
-# Define token
-TOKEN = "<enter token here>"
 
 # Create updater and dispatcher
 updater = Updater(token=TOKEN, use_context=True)
