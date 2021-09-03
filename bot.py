@@ -29,8 +29,10 @@ def album(update, context):
     artist, album, album_url = update.message.text[7:].split(',')
     album_path = "/media/audio/" + artist + "/" + album + "/"
     print(album_path)
+    context.bot.send_message(chat_id=update.effective_chat.id, text="Starting download ...")
     os.system(str('mkdir -p ' + album_path))
     os.system(str("spotdl --output-format m4a " + album_url + " --output " + album_path))
+    context.bot.send_message(chat_id=update.effective_chat.id, text="Downloaded, now wait for Jellyfin to update!")
 
 # Add bot functions
 start_handler = CommandHandler('start', start)
